@@ -1,31 +1,237 @@
-@import "bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=MedievalSharp&family=Nanum+Gothic+Coding&display=swap');
 
-
-
-body{
-    padding: 15px;
+body {
+  background: radial-gradient(circle at top, #0a0a0a, #000000 80%);
+  font-family: 'Uncial Antiqua', cursive;
+  color: white;
 }
 
-h1{
-  color: darkgreen;
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-
+/* Aviso */
+.aviso-magico {
+  color: #00ffcc;
+  text-align: center;
+  text-shadow: 0 0 10px #00ffcc;
 }
 
-.btn_principal{
-    color: white;
-    background-color: darkgreen;
+/* Título */
+.titulo-magico {
+  color: gold;
+  font-size: 3rem;
+  margin-top: 20px;
+  text-shadow: 0 0 10px gold, 0 0 30px orange;
 }
 
+/* Container */
+.magia-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Card mágico */
+.card-magico {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid gold;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  transition: 0.4s;
+}
+
+/* Hover do card */
+.card-magico:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px gold;
+}
+
+/* Nome da casa */
+.nome-casa {
+  color: gold;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px gold;
+}
+
+/* Pontos */
+.pontos-casa {
+  color: #ddd;
+  font-size: 1.2rem;
+}
+
+/* Imagem */
 .casa-imagem {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-  }
+  max-height: 120px;
+  filter: drop-shadow(0 0 10px gold);
+}
 
+/* Botão mágico */
+.btn-magico {
+  background: linear-gradient(45deg, gold, orange);
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* Hover botão */
+.btn-magico:hover {
+  background: gold;
+  box-shadow: 0 0 15px gold;
+  transform: scale(1.05);
+}
+
+/* ===== CONTAINER ===== */
+.magia-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* ===== CARD ===== */
+.card-magico2 {
+  background: #121212 !important;
+  border: 1px solid gold !important;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+}
+
+/* ===== LABEL ===== */
+.label-magico {
+  color: gold;
+}
+
+/* ===== INPUT ===== */
+.input-magico {
+  background-color: #1a1a1a !important;
+  color: white !important;
+  border: 1px solid #333 !important;
+}
+
+.input-magico:focus {
+  border-color: gold !important;
+  box-shadow: 0 0 8px gold !important;
+}
+
+/* ===== CONTAINER ===== */
+.magia-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* ===== CARD ===== */
+.card-magico {
+  background: #121212 !important;
+  border: 1px solid gold !important;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+}
+
+/* ===== LABEL ===== */
+.label-magico {
+  color: gold;
+}
+
+/* ===== INPUT ===== */
+.input-magico {
+  background-color: #1a1a1a !important;
+  color: white !important;
+  border: 1px solid #333 !important;
+}
+
+.input-magico:focus {
+  border-color: gold !important;
+  box-shadow: 0 0 8px gold !important;
+}
+
+/* ===== BOTÃO PRINCIPAL ===== */
+.btn-magico {
+  background: linear-gradient(45deg, gold, orange);
+  color: black !important;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-magico:hover {
+  background: gold;
+  box-shadow: 0 0 15px gold;
+  transform: scale(1.05);
+}
+
+/* ===== BOTÃO SECUNDÁRIO ===== */
+.btn-magico-secundario {
+  background: #222;
+  color: gold !important;
+  border: 1px solid gold;
+  border-radius: 10px;
+  padding: 8px 20px;
+}
+
+.btn-magico-secundario:hover {
+  background: gold;
+  color: black !important;
+}
+
+/* ===== ALERTAS ===== */
+.alerta-magico {
+  background-color: #1a1a1a !important;
+  color: white !important;
+  border: 1px solid gold !important;
+}
+
+/* ===== GRID DE CARDS ===== */
+.row-casas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* ===== CARD PADRÃO FIXO ===== */
+.card-magico {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid gold;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  transition: 0.4s;
+
+  width: 260px;        /* 🔥 largura fixa */
+  height: 320px;       /* 🔥 altura fixa */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* distribui conteúdo */
+  align-items: center;
+  padding: 15px;
+}
+
+/* ===== HOVER ===== */
+.card-magico:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px gold;
+}
+
+/* ===== IMAGEM ===== */
+.casa-imagem {
+  max-height: 100px;
+  margin-bottom: 10px;
+}
+
+/* ===== NOME ===== */
+.nome-casa {
+  color: gold;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/* ===== PONTOS ===== */
+.pontos-casa {
+  color: #ddd;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* ===== BOTÃO ===== */
+.card-magico .btn {
+  margin-top: auto;
+}
 

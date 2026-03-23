@@ -1,23 +1,115 @@
-<%= stylesheet_link_tag "alunos", media: "all", "data-turbo-track": "reload" %>
-<div class="container">
+<%= stylesheet_link_tag "resposta", media: "all", "data-turbo-track": "reload" %>
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
 
-  <h2 class="text-center">Olá, <%= aluno.nome %> sua casa é...</h2>
+<!-- Canvas da magia -->
+<canvas id="magia"></canvas>
 
-  <% case aluno.casa.nome.downcase %>
-    <% when 'css' %>
-      <%= image_tag "css.png", alt: "Casa CSS", class: "img-fluid casa-imagem" %>
-    <% when 'html' %>
-      <%= image_tag "html.png", alt: "Casa HTML", class: "img-fluid casa-imagem" %>
-    <% when 'javascript' %>
-      <%= image_tag "js.png", alt: "Casa JavaScript", class: "img-fluid casa-imagem" %>
-    <% else %>
-      <p>Casa desconhecida</p>
-  <% end %>
-
-
-<div class="text-center">
-  <a href="<%=new_aluno_path%>"> <button class="btn btn-primary btn_principal"> Voltar </button></a>
+<!-- Resultado animado -->
+<div id="resultado">
+  <img id="escudo" src="">
+  <h1 id="nomeCasa"></h1>
 </div>
 
-
+<!-- Saudação -->
+<div class="container text-center mt-4" style="position: relative; z-index: 20;">
+  <h2 class="text-light">
+    🧙‍♂️ Olá, <%= @aluno.nome %>... o Chapéu decidiu!
+  </h2>
 </div>
+
+<!-- BOTÃO FIXO EMBAIXO -->
+<div style="position: fixed; bottom: 30px; width: 100%; text-align: center; z-index: 30;">
+  <%= link_to "🔄 Fazer o teste novamente", new_aluno_path, class: "btn magia-btn" %>
+</div>
+
+<script>
+  const canvas = document.getElementById("magia");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particles = [];
+
+  function criarParticulas(cor) {
+    particles = [];
+    for (let i = 0; i < 250; i++) {
+      particles.push({
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 12,
+        vy: (Math.random() - 0.5) * 12,
+        size: Math.random() * 4,
+        color: cor
+      });
+    }
+  }
+
+  function animar() {
+    ctx.fillStyle = "rgba(0,0,0,0.2)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(animar);
+  }
+
+  animar();
+
+  function mostrarCasa(casa) {
+    document.getElementById("resultado").style.display = "block";
+
+    let cor, imagem, nome;
+
+    if (casa === "HTML") {
+      cor = "red";
+      imagem = "/assets/html.png";
+      nome = "HTML";
+    } else if (casa === "CSS") {
+      cor = "blue";
+      imagem = "/assets/css.png";
+      nome = "CSS";
+    } else if (casa === "JS") {
+      cor = "yellow";
+      imagem = "/assets/js.png";
+      nome = "JAVASCRIPT";
+    }
+
+    criarParticulas(cor);
+
+    const escudo = document.getElementById("escudo");
+    const titulo = document.getElementById("nomeCasa");
+
+    escudo.src = imagem;
+    titulo.innerText = nome;
+
+    titulo.style.color = cor;
+    titulo.style.textShadow = `0 0 20px ${cor}, 0 0 40px ${cor}`;
+
+    escudo.style.filter = `drop-shadow(0 0 20px ${cor}) drop-shadow(0 0 40px ${cor})`;
+
+    escudo.classList.remove("showEscudo");
+    titulo.classList.remove("showNome");
+
+    setTimeout(() => escudo.classList.add("showEscudo"), 500);
+    setTimeout(() => titulo.classList.add("showNome"), 1200);
+  }
+
+  // Rails → JS
+  document.addEventListener("DOMContentLoaded", function() {
+    const casa = "<%= @aluno.casa.nome.upcase %>";
+
+    if (casa === "JAVASCRIPT") {
+      mostrarCasa("JS");
+    } else {
+      mostrarCasa(casa);
+    }
+  });
+</script>

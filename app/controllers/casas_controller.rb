@@ -7,8 +7,16 @@ class CasasController < ApplicationController
   end
 
   # GET /casas/1 or /casas/1.json
+
   def show
+  @casa = Casa.find(params[:id])
+  @alunos = Aluno.where(casa_id: @casa.id)
+
+  respond_to do |format|
+    format.html
+    format.xlsx
   end
+end
 
   def alunosPorCasa
     @alunosPorCasa = Aluno.all
@@ -88,6 +96,8 @@ def adicionar_pontos
     redirect_to atribuicao_pontual_especial_casas_path, alert: "Por favor, selecione uma casa."
   end
 end
+
+
 
 
 

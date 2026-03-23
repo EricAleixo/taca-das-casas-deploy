@@ -1,48 +1,70 @@
 <%= stylesheet_link_tag "alunos", media: "all", "data-turbo-track": "reload" %>
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
 
-<div class="container">
+<div class="container magia-bg">
 
-  <div class="logo-container">
-    <%= image_tag "logo.png", alt: "Logo", class: "logo" %>
+  <div class="logo-container text-center mb-4">
+    <%= image_tag "logo.png", alt: "Chapéu Seletor", class: "logo magia-logo" %>
   </div>
 
-<div class="card" style="width: 100%; max-width: 600px; margin: auto;">
-  <div class="card-body">
-    <h2 class="card-title text-center display-4 font-weight-bold text-primary animated fadeIn">Bem-vindo ao Chápeu Seletor da Taça das Casas Web!</h2>
-    <p class="lead text-muted">Com ele você poderá ir para CSS, HTML ou JavaScript</p>
-    <p class="card-text">Este é o seu momento de descobrir a casa que melhor representa suas habilidades e afinidades no mundo da programação! Com o nosso Chápeu Seletor, você terá a oportunidade de ser atribuído a uma das três casas de conhecimento: <strong>CSS</strong>, <strong>HTML</strong> ou <strong>JavaScript</strong>.</p>
+  <div class="card magia-card" style="width: 100%; max-width: 700px; margin: auto;">
+    <div class="card-body text-light">
 
-    <p class="card-text">Cada casa representa um conjunto único de habilidades, e, ao escolher suas respostas, você estará ajudando o Chápeu Seletor a determinar qual é o melhor lugar para você!</p>
+      <h2 class="card-title text-center display-5 magia-title">
+        🧙‍♂️ O Chapéu Seletor aguarda sua decisão...
+      </h2>
 
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><strong>CSS</strong>: Para os mestres da estilização e da criação de interfaces deslumbrantes e responsivas.</li>
-      <li class="list-group-item"><strong>HTML</strong>: Para os apaixonados pela estruturação e organização de conteúdo web.</li>
-      <li class="list-group-item"><strong>JavaScript</strong>: Para os aventureiros que dominam a lógica e as interações dinâmicas do navegador.</li>
-    </ul>
+      <p class="lead text-center magia-subtitle">
+        "Hmm... difícil... muito talento eu vejo aqui..."
+      </p>
 
-    <p class="card-text mt-3">Escolha sabiamente e prepare-se para embarcar nessa jornada de aprendizado! O Chápeu Seletor está aqui para guiá-lo e ajudá-lo a encontrar sua verdadeira casa! 🏠✨</p>
+      <p class="card-text">
+        Você está prestes a ser analisado pelo poderoso <strong>Chapéu Seletor</strong>, uma entidade mágica capaz de enxergar suas verdadeiras habilidades no mundo da programação.
+      </p>
+
+      <p class="card-text">
+        Ele decidirá para qual casa você pertence com base em suas escolhas e afinidades...
+      </p>
+
+      <ul class="list-group list-group-flush magia-list">
+        <li class="list-group-item">
+          🔵 <strong>CSS</strong>: Onde vivem os mestres da aparência, capazes de encantar com layouts e estilos impressionantes.
+        </li>
+        <li class="list-group-item">
+          🔴 <strong>HTML</strong>: A base de tudo, onde os arquitetos do conteúdo constroem a estrutura do mundo digital.
+        </li>
+        <li class="list-group-item">
+          🟡 <strong>JavaScript</strong>: Para os bruxos da lógica e da interatividade, dominando o comportamento da web.
+        </li>
+      </ul>
+
+      <p class="card-text mt-3 text-center">
+        O Chapéu já começou a pensar... agora falta você dar o primeiro passo.
+      </p>
+
+    </div>
   </div>
-</div>
 
+ <div class="container mt-4" style="max-width: 600px; margin: auto;">
+  <%= form_with model: @aluno, local: true, data: { turbo: false } do |form| %>
 
-<div class="container" style="max-width: 600px; margin: auto;">
-  <%= form_with model: @aluno, local: true do |form| %>
     <div class="row mb-3">
       <div class="col-md-6">
-        <%= form.label :nome, class: "form-label" %>
-        <%= form.text_field :nome, class: "form-control", placeholder: "Digite seu nome completo" %>
+        <%= form.label :nome, "Seu Nome, jovem bruxo(a):", class: "form-label text-light" %>
+        <%= form.text_field :nome, class: "form-control magia-input", placeholder: "Digite seu nome completo" %>
       </div>
 
       <div class="col-md-6">
-        <%= form.label :turma, class: "form-label" %>
-        <%= form.select :turma, ["2º INFO - A", "2º INFO - B", "2º INFO - C"], { prompt: "Selecione a turma" }, class: "form-control" %>
+        <%= form.label :turma, "Sua turma:", class: "form-label text-light" %>
+        <%= form.select :turma, ["2º INFO - H", "2º INFO - I", "2º INFO - J"], { prompt: "Selecione a turma" }, class: "form-control magia-input" %>
       </div>
     </div>
 
     <div class="text-center">
-      <%= form.submit "Iniciar Teste", class: "btn btn-primary btn_principal" %>
+      <%= form.submit "🧙‍♂️ Descobrir minha casa", class: "btn magia-btn" %>
     </div>
+
   <% end %>
 </div>
 
-
+</div>

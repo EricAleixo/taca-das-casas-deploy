@@ -1,38 +1,53 @@
-<%= stylesheet_link_tag "casas", media: "all", "data-turbo-track": "reload" %>
-<div class="containaer">
+<%= stylesheet_link_tag "casa", media: "all", "data-turbo-track": "reload" %>
 
-    <%@alunosPorCasa = Aluno.all%>
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
 
-    <table id="questoes-table" class="table table-striped"
-       data-pagination="true"
-       data-page-size="10"
-       data-search="true"
-       data-show-columns="true"
-       data-pagination-parts='["pageSize", "pageList"]'
-       data-toggle="table"
-       data-search-placeholder="Pesquisar...">
-  <thead>
-    <tr>
-      <th data-field="enunciado" data-sortable="true">Aluno (a) </th>
-      <th data-field="status" data-sortable="false">Turma</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @alunosPorCasa.each do |aluno| %>
+<div class="container magia-container">
+
+ <% cor = case casa.nome.downcase
+  when "html" then "red"
+  when "css" then "blue"
+  when "javascript" then "yellow"
+  else "gold"
+end %>
+
+<h1 class="titulo-casa text-center mb-4"
+    style="color: <%= cor %>; text-shadow: 0 0 10px <%= cor %>, 0 0 30px <%= cor %>;">
+  🧙‍♂️ Alunos da Casa <%= casa.nome %>
+</h1>
+
+  <% @alunosPorCasa = Aluno.all %>
+
+  <table id="questoes-table"
+         class="table tabela-magica-dark"
+         data-pagination="true"
+         data-page-size="10"
+         data-search="true"
+         data-show-columns="true"
+         data-pagination-parts='["pageSize", "pageList"]'
+         data-toggle="table"
+         data-search-placeholder="Pesquisar...">
+
+    <thead>
       <tr>
-        <%if aluno.casa_id == casa.id%>
-          <td><%= aluno.nome %></td>
-          <td><%= aluno.turma %></td>
-        <%end%>
+        <th>Aluno (a)</th>
+        <th>Turma</th>
+      </tr>
+    </thead>
 
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @alunosPorCasa.each do |aluno| %>
+        <% if aluno.casa_id == casa.id %>
+          <tr>
+            <td><%= aluno.nome %></td>
+            <td><%= aluno.turma %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
 
+  </table>
 
-
-
-
+  <%= link_to "📥 Exportar Excel", casa_path(@casa, format: :xlsx), class: "btn btn-success" %>
 
 </div>

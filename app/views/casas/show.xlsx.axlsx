@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Alunos") do |sheet|
+  sheet.add_row ["Aluno", "Turma"]
+
+  @alunos.each do |aluno|
+    sheet.add_row [
+    aluno.nome.to_s.encode('UTF-8'),
+    aluno.turma.to_s.encode('UTF-8')
+    ]
+  end
+end

@@ -1,35 +1,47 @@
 <%= stylesheet_link_tag "casas", media: "all", "data-turbo-track": "reload" %>
 
-<div class="container mt-4">
-  <h1 class="text-center mb-4">Atribuição de Pontos às Casas</h1>
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+<div class="page-pontos">
 
-  <% if notice %>
-    <div class="alert alert-success" role="alert">
-      <%= notice %>
-    </div>
-  <% elsif alert %>
-    <div class="alert alert-danger" role="alert">
-      <%= alert %>
-    </div>
-  <% end %>
+  <div class="container magia-container mt-4">
 
-  <%= form_with url: adicionar_pontos_casas_path, method: :post, class: "card p-4 shadow" do %>
-    <div class="mb-3">
-      <label for="casa_id" class="form-label">Selecione a Casa:</label>
-      <%= select_tag :casa_id, options_from_collection_for_select(@casas, :id, :nome), prompt: "Escolha uma casa", class: "form-select" %>
-    </div>
+    <h1 class="titulo-magico">
+      🏆 Atribuição de Pontos às Casas
+    </h1>
 
-    <div class="mb-3">
-      <label for="pontos" class="form-label">Quantidade de Pontos (use valores negativos para subtrair):</label>
-      <%= number_field_tag :pontos, nil, class: "form-control" %>
-    </div>
+    <% if notice %>
+      <div class="alert alerta-magico"><%= notice %></div>
+    <% elsif alert %>
+      <div class="alert alerta-magico"><%= alert %></div>
+    <% end %>
 
-    <div class="d-grid">
-      <%= submit_tag "Adicionar/Remover Pontos", class: "btn btn-success btn-sm w-25 mx-auto" %>
-    </div>
-  <% end %>
+    <%= form_with url: adicionar_pontos_casas_path, method: :post, class: "card-pontos" do %>
+
+      <div class="mb-3">
+        <label class="label-magico">Casa</label>
+        <%= select_tag :casa_id,
+              options_from_collection_for_select(@casas, :id, :nome),
+              class: "form-select input-magico" %>
+      </div>
+
+      <div class="mb-3">
+        <label class="label-magico">Pontos</label>
+        <%= number_field_tag :pontos, nil, class: "form-control input-magico" %>
+      </div>
+
+      <div class="text-center">
+        <%= submit_tag "✨ Conceder Pontos", class: "btn btn-magico" %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>
+
 
   <div class="text-center mt-4">
-    <%= link_to "Acompanhar Placar", casas_path, class: "btn btn-primary", target: "_blank" %>
+    <%= link_to "🏆 Ver Placar", casas_path, class: "btn btn-magico-secundario", target: "_blank" %>
   </div>
+
 </div>

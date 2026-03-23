@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_09_164705) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_17_110725) do
   create_table "alunos", force: :cascade do |t|
     t.string "nome"
     t.string "turma"
-    t.integer "casa_id", null: true
+    t.integer "casa_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["casa_id"], name: "index_alunos_on_casa_id"
@@ -44,6 +44,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_09_164705) do
     t.datetime "updated_at", null: false
     t.index ["aluno_id"], name: "index_resposta_on_aluno_id"
     t.index ["questao_id"], name: "index_resposta_on_questao_id"
+  end
+
+  create_table "turmas", force: :cascade do |t|
+    t.string "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "alunos", "casas"

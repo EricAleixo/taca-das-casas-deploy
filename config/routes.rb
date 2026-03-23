@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :turmas
   resources :alunos do
     member do
       get :responder_questoes

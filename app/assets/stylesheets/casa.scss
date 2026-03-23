@@ -1,0 +1,146 @@
+/* ===== FUNDO GLOBAL ===== */
+html, body {
+  background: radial-gradient(circle at top, #0a0a0a, #000000 90%) !important;
+  color: white;
+  font-family: 'Uncial Antiqua', cursive;
+}
+
+/* ===== CONTAINER ===== */
+.container, .container-fluid {
+  max-width: 1000px;
+  margin: auto;
+  background-color: transparent !important;
+}
+
+/* ===== TÍTULOS ===== */
+h1, .titulo-casa {
+  color: gold;
+  text-align: center;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px gold, 0 0 30px orange;
+}
+
+/* ===== BOTÕES ===== */
+.btn_principal, .btn-success {
+  background: linear-gradient(45deg, gold, orange);
+  color: black !important;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px 20px;
+  transition: 0.3s;
+}
+
+.btn_principal:hover, .btn-success:hover {
+  background: gold;
+  box-shadow: 0 0 15px gold;
+  transform: scale(1.05);
+}
+
+/* ===== REMOVE FUNDO BRANCO DO BOOTSTRAP ===== */
+.table {
+  background: transparent !important;
+}
+
+/* ===== WRAPPER BOOTSTRAP TABLE ===== */
+.bootstrap-table {
+  background-color: #000 !important;
+}
+
+/* ===== TABELA ===== */
+.bootstrap-table .table,
+table.tabela-magica-dark {
+  background-color: #121212 !important;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+}
+
+/* ===== CABEÇALHO ===== */
+.bootstrap-table .table thead th,
+table.tabela-magica-dark th {
+  background-color: #1a1a1a !important;
+  color: gold !important;
+  padding: 14px;
+  text-align: center;
+  border-bottom: 2px solid gold;
+}
+
+/* ===== TEXTO ===== */
+.bootstrap-table .table td,
+table.tabela-magica-dark td {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  padding: 12px;
+  text-align: center;
+}
+
+/* ===== LINHAS ===== */
+.bootstrap-table .table tbody tr td {
+  border-bottom: 1px solid #2a2a2a;
+}
+
+/* ===== LINHAS ALTERNADAS ===== */
+.bootstrap-table .table tbody tr:nth-child(even) td {
+  background-color: #181818 !important;
+}
+
+/* ===== HOVER ===== */
+.bootstrap-table .table tbody tr:hover td {
+  background-color: #2a2a2a !important;
+  transition: 0.2s;
+}
+
+/* ===== ÍCONES ===== */
+.bi-eye-fill {
+  color: #F0DB4F !important;
+}
+
+.bi-pen-fill {
+  color: #00bfff !important;
+}
+
+.bi-trash-fill {
+  color: #ff4d4d !important;
+}
+
+/* ===== MODAL ===== */
+.modal-content {
+  background-color: #121212;
+  color: white;
+  border: 1px solid gold;
+}
+
+.modal-header {
+  border-bottom: 1px solid gold;
+}
+
+.modal-title {
+  color: gold;
+}
+
+/* ===== INPUTS ===== */
+.form-control, .form-select {
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid #333;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: gold;
+  box-shadow: 0 0 5px gold;
+}
+
+/* ===== PAGINAÇÃO ===== */
+.page-link {
+  background-color: #111 !important;
+  color: gold !important;
+  border: 1px solid #444 !important;
+}
+
+.page-link:hover {
+  background-color: gold !important;
+  color: black !important;
+}

@@ -69,3 +69,5 @@ gem 'byebug', group: [:development, :test]
 gem "sassc-rails", "~> 2.1"
 
 gem "bootstrap", "~> 5.3"
+
+gem 'axlsx_rails'
