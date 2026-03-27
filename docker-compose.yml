@@ -9,3 +9,8 @@ services:
       RAILS_SERVE_STATIC_FILES: "true"
       SECRET_KEY_BASE: 7ddead2df6218dde03d8b663400aaf25ffc3876dcfa16739db567ede01bb075f8185213355b770030f9b9472f325a66b6a4e95a3b7da635cca8ff4cfe9a13127
     restart: always
+    volumes:
+      - sqlite_data:/rails/storage
+
+volumes:
+  sqlite_data:
